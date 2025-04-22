@@ -15,6 +15,7 @@ import static io.restassured.RestAssured.baseURI;
 public class BankAccountAPISteps {
 
     private Response response;
+    private int code;
 
 //    @Given("the API endpoint {string} is running")
 //    public void theAPIEndpointIsRunning(String endpoint) {
@@ -30,10 +31,7 @@ public class BankAccountAPISteps {
 //                .get(endpoint);
 //    }
 //
-//    @Then("the response should be status code {int}")
-//    public void verifyStatusCodes(int expectedCode) {
-//        Assert.assertEquals(expectedCode, response.getStatusCode());
-//    }
+
 
     @When("I send a POST request to {string} with name {string} and balance {int}")
     public void iSendAPOSTRequestToWithNameAndBalance(String endpoint, String name, int balance) {
@@ -44,22 +42,28 @@ public class BankAccountAPISteps {
                 + "\"user\": null"
                 + "}";
 
-        response = given()
+        code = given()
                 .header("Authorization", "Bearer " + AuthContext.token)
                 .contentType(ContentType.JSON)
                 .body(requestBody)
                 .when()
-                .post(endpoint);
+                .post(endpoint)
+            .statusCode();
     }
 
 
 
     @When("I send a DELETE request to {string}")
     public void iSendADELETERequestTo(String endpoint) {
-        response = given()
+        code = given()
                 .header("Authorization", "Bearer " + AuthContext.token)
                 .when()
-                .delete(endpoint);
+                .delete(endpoint)
+            .statusCode();
+    }
+    @Then("the response status code of {int}")
+    public void theResponseStatusCodeOf(int expectedCode) {
+        Assert.assertEquals(expectedCode, code);
     }
 }
 
