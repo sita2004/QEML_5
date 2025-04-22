@@ -42,14 +42,15 @@ public class BankAccountUISteps {
 
     @When("I click on the Create button on the Bank Account page")
     public void iClickOnTheCreateButtonOnTheBankAccountPage() {
-        //driver.get(ConfigManager.get("baseUrl")+"/bank-account/new");
+        
         bankAccountPage.clickCreateButton();
-        //driver.get(ConfigManager.get("baseUrl")+"/bank-account/new");
+        
     }
 
     @Then("the Bank Account form should be visible")
     public void theBankAccountFormShouldBeVisible() {
-        //driver.get(ConfigManager.get("baseUrl")+"/bank-account/new");
+        driver.get(ConfigManager.get("baseUrl")+"/bank-account/new");
+                bankAccountPage = new BankAccountPage(driver);
         assertTrue(bankAccountPage.isFormVisible());
     }
 
@@ -96,7 +97,7 @@ public class BankAccountUISteps {
 
     @Then("the Bank Account should be deleted and no longer visible in the listing")
     public void theBankAccountShouldBeDeletedAndNoLongerVisibleInTheListing() {
-        // Check that the bank account is no longer present
+        
         assertFalse(bankAccountPage.isViewPresent());
     }
 }
