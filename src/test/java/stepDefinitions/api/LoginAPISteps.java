@@ -18,8 +18,21 @@ public class LoginAPISteps {
         endpoint = apiEndpoint;
     }
 
-    @When("I send a POST request with username {string} and password {string}")
-    public void i_send_a_post_request_with_username_and_password(String username, String password) {
+    @When("I send a POST request with valid credentials")
+    public void i_send_a_post_request_with_username_and_password() {
+        String username=ConfigManager.get("valid.username");
+        String password=ConfigManager.get("valid.password");
+        String body = String.format("{\"username\":\"%s\",\"password\":\"%s\",\"rememberMe\":false}", username, password);
+        response = given()
+                .header("Content-Type", "application/json")
+                .body(body)
+                .when()
+                .post(endpoint);
+    }
+        @When("I send a POST request with invalid credentials")
+    public void i_send_a_post_request_with_username_and_password() {
+        String username=ConfigManager.get("invalid.username");
+        String password=ConfigManager.get("invalid.password");
         String body = String.format("{\"username\":\"%s\",\"password\":\"%s\",\"rememberMe\":false}", username, password);
         response = given()
                 .header("Content-Type", "application/json")
