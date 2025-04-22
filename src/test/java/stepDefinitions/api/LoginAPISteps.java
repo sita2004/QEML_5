@@ -14,7 +14,7 @@ public class LoginAPISteps {
 
     @Given("the API endpoint {string} is available")
     public void the_api_endpoint_is_available(String apiEndpoint) {
-        baseURI = "http://localhost:9000"; // adjust base URI as per your setup
+        baseURI = "http://localhost:9000";
         endpoint = apiEndpoint;
     }
 
