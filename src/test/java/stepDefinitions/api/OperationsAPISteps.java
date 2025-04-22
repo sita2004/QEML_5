@@ -13,12 +13,12 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class OperationsAPISteps {
-    //private String endpoint;
+    
     private Response response;
     @Given("the API endpoint {string} is up and running")
     public void theAPIEndpointIsUpAndRunning(String apiEndpoint) {
-        baseURI = "http://localhost:9000"; // adjust base URI as per your setup
-        //endpoint = apiEndpoint;
+        baseURI = "http://localhost:9000"; 
+        
     }
 
     @When("I send a GET request to {string}")
