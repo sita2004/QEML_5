@@ -1,0 +1,6 @@
+projectKey=Automation_FrameWork
+serverUrl=http://localhost:9000
+serverVersion=25.5.0.107428
+dashboardUrl=http://localhost:9000/dashboard?id=Automation_FrameWork
+ceTaskId=c09df3ca-ec0b-498c-bc86-3099daaacd37
+ceTaskUrl=http://localhost:9000/api/ce/task?id=c09df3ca-ec0b-498c-bc86-3099daaacd37
