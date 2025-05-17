@@ -1,0 +1,3 @@
+stepDefinitions\LoginSteps.class
+tests\LoginTest.class
+api\ApiTest.class
